@@ -1,12 +1,28 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
+  constructor() {
+    super();
+    this.types = ["Business", "Entertainment", "General", "Health", "Science", "Sports", "Technology"];
+  }
   render() {
-    return(
-      <div className="navbar navbar-expand-lg bg-body-tertiary" /*data-bs-theme={props.mode}*/ >
+    const listItems = this.types.map((item, index) => (
+      <li className="nav-item" key={index}>
+        <Link className="nav-link" to={`/${item.toLowerCase()}`}>
+          {item}
+        </Link>
+      </li>
+    ));
+
+    return (
+      <div
+        className="navbar navbar-expand-lg bg-body-tertiary" /*data-bs-theme={props.mode}*/
+      >
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">News Monkey</Link>
+          <Link className="navbar-brand" to="/general">
+            News Monkey
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -21,33 +37,32 @@ export default class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/">Home</Link>
+                <Link className="nav-link" aria-current="page" to="/general">
+                  Home
+                </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/about">About</Link>
-              </li>
+              {listItems}
             </ul>
             {/* <div className={`form-check form-switch text-${props.mode==="light"?"dark":"light"} `}> */}
-            <div className = "form-check form-switch">
-                {/* <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" /> */}
-                <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                {/* <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable {props.mode==="light"?"Dark":"Light"} Mode</label> */}
-                <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Mode</label>
-              </div>
-            <form className="d-flex" role="search">
+            <div className="form-check form-switch">
+              {/* <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" /> */}
               <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              /> 
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
+                className="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+              />
+              {/* <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable {props.mode==="light"?"Dark":"Light"} Mode</label> */}
+              <label
+                className="form-check-label"
+                htmlFor="flexSwitchCheckDefault"
+              >
+                Enable Mode
+              </label>
+            </div>
           </div>
         </div>
       </div>
-      )
-    }
-  };
+    );
+  }
+}
