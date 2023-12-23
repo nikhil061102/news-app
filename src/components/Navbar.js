@@ -17,7 +17,7 @@ export default class Navbar extends Component {
 
     return (
       <div
-        className="navbar navbar-expand-lg bg-body-tertiary" /*data-bs-theme={props.mode}*/
+        className="navbar fixed-top navbar-expand-lg bg-body-tertiary" /*data-bs-theme={props.mode}*/
       >
         <div className="container-fluid">
           <Link className="navbar-brand" to="/general">
